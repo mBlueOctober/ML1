@@ -1,6 +1,6 @@
 colors <- c("setosa" = "red", "versicolor" = "green3",
             "virginica" = "blue")
-plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col
+plot(iris[, 3:4], pch = 19, bg = colors[iris$Species], col
      = colors[iris$Species], asp = 1)
 xl <- iris[, 3:5] ## выборка
 eD <- function(u, v)  ##функция расстояний, эвклидово расстояние между функциями
@@ -28,5 +28,6 @@ NN1 <- function(xl, point)
 
 point <- c(4.3, 2.0)
 class <- NN1(xl, point)
-points(point[1], point[2], pch = 21, bg = colors[class], asp = 1)
+points(point[1], point[2], pch = 19, bg = colors[class], asp = 1)
 
+legend("bottomright", c("virginica", "versicolor", "setosa"), pch = c(19,19,19), col = c("blue", "green3", "red"))
