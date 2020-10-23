@@ -2,28 +2,28 @@ colors <- c("setosa" = "red", "versicolor" = "green3",
             "virginica" = "blue")
 plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col
      = colors[iris$Species], asp = 1)
-xl <- iris[, 3:5] ## âûáîðêà
-eD <- function(u, v)  ##ôóíêöèÿ ðàññòîÿíèé, ýâêëèäîâî ðàññòîÿíèå ìåæäó ôóíêöèÿìè
-{
+xl <- iris[, 3:5] ## Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ°
+eD <- function(u, v)  ##Ñ„ÑƒÐ½ÐºÑ†Ð¸Ñ Ñ€Ð°ÑÑÑ‚Ð¾ÑÐ½Ð¸Ð¹, ÑÐ²ÐºÐ»Ð¸Ð´Ð¾Ð²Ð¾ Ñ€Ð°ÑÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð¼ÐµÐ¶Ð´Ñƒ Ñ„ÑƒÐ½ÐºÑ†Ð¸ÑÐ¼Ð¸
         sqrt(sum((u - v)^2))
 }
-sort <- function(xl, point)  ## ñîðòèðîâêà îáúåêòîâ ïî âîçðàñòàíèþ ñîãëàñíî ðàñòîÿíèÿ äî îáúåêòà point
+sort <- function(xl, point)  ## ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð¾Ð±ÑŠÐµÐºÑ‚Ð¾Ð² Ð¿Ð¾ Ð²Ð¾Ð·Ñ€Ð°ÑÑ‚Ð°Ð½Ð¸ÑŽ ÑÐ¾Ð³Ð»Ð°ÑÐ½Ð¾ Ñ€Ð°ÑÑ‚Ð¾ÑÐ½Ð¸Ñ Ð´Ð¾ Ð¾Ð±ÑŠÐµÐºÑ‚Ð° point
+{
 {
         l <- dim(xl)[1]
         n <- dim(xl)[2] - 1
         distances <- matrix(NA, l, 2)
         for (i in 1:l)
         {
-                distances[i, ] <- c(i,eD(xl[i, 1:n], point)) ## ðàññòîÿíèå îò êàæäîé òî÷êè äî òî÷êè point, êëàññèôèöèðóåìîé
+                distances[i, ] <- c(i,eD(xl[i, 1:n], point)) ## Ñ€Ð°ÑÑÑ‚Ð¾ÑÐ½Ð¸Ðµ Ð¾Ñ‚ ÐºÐ°Ð¶Ð´Ð¾Ð¹ Ñ‚Ð¾Ñ‡ÐºÐ¸ Ð´Ð¾ Ñ‚Ð¾Ñ‡ÐºÐ¸ point, ÐºÐ»Ð°ÑÑÐ¸Ñ„Ð¸Ñ†Ð¸Ñ€ÑƒÐµÐ¼Ð¾Ð¹
         }
-        newXl <- xl[order(distances[, 2]), ] ## ñîðòèðîâêà âûáîðêè
+        newXl <- xl[order(distances[, 2]), ] ## ÑÐ¾Ñ€Ñ‚Ð¸Ñ€Ð¾Ð²ÐºÐ° Ð²Ñ‹Ð±Ð¾Ñ€ÐºÐ¸
 }
 NN1 <- function(xl, point)
 {
         newXl <- sort(xl, point)
         n <- dim(newXl)[2] - 1 
-        class <- newXl[1, n + 1] ## ïîëó÷åíèå êëàññà ñîñåäà
-        return (class)## âîçâðàùàåì êëàññ
+        class <- newXl[1, n + 1] ## Ð¿Ð¾Ð»ÑƒÑ‡ÐµÐ½Ð¸Ðµ ÐºÐ»Ð°ÑÑÐ° ÑÐ¾ÑÐµÐ´Ð°
+        return (class) ## Ð²Ð¾Ð·Ð²Ñ€Ð°Ñ‰Ð°ÐµÐ¼ ÐºÐ»Ð°ÑÑ
 }
 
 point <- c(4.3, 2.0)
